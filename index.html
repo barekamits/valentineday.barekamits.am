@@ -51,21 +51,17 @@
 
     .tught-img {
       position: absolute;
-      width: 80%;        /* 80% parent-ից */
+      width: 80%;
       height: 30%;
-
-      top: 40%;          /* parent-ի բարձրության 45% */
+      top: 40%;
       left: 50%;
       transform: translateX(-50%);
-
       border-radius: 2%;
       z-index: 1;
-
       object-fit: cover;
       mix-blend-mode: multiply;
       filter: sepia(0.5) saturate(1.5) brightness(0.8) contrast(1.2);
     }
-
 
     .envelope-img {
       position: absolute;
@@ -89,7 +85,7 @@
 
     .thetext h1 {
       font-family: "Vrdznagir", serif;
-      font-size: 22px;
+      font-size: 24px;
       opacity: 0.85;
     }
 
@@ -97,16 +93,26 @@
 
     .content {
       position: absolute;
-      top:30%;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       text-align: center;
       color: #f5f0eb;
       opacity: 0;
       transition: all 0.8s ease;
       pointer-events: none;
       width: 90%;
-      max-width: 420px;
+      max-width: 450px;
+      
+      /* Կարմիր քառակուսի */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 3px solid #8B0000;
+      border-radius: 20px;
+      padding: 35px 25px;
+      box-shadow: 
+        0 8px 32px rgba(139, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
     .content.show {
@@ -117,32 +123,35 @@
     .header h1 {
       font-size: clamp(18px, 5vw, 28px);
       letter-spacing: 2px;
-      color: #800020;
+      color: #8B0000;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .header h2 {
       font-size: clamp(36px, 9vw, 60px);
       font-style: italic;
-      color: #800020;
+      color: #8B0000;
       margin-top: 6px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .subtitle {
       margin-top: 14px;
       font-size: clamp(14px, 4vw, 18px);
-      color: #800020;
-      opacity: 0.85;
+      color: #8B0000;
+      opacity: 0.9;
     }
 
     .details {
       margin-top: 26px;
-      color: #800020;
+      color: #8B0000;
     }
 
     .date {
       font-size: clamp(18px, 5vw, 26px);
       letter-spacing: 2px;
       margin-bottom: 18px;
+      font-weight: 600;
     }
 
     .venue-name {
@@ -163,7 +172,7 @@
 
     /* ---------- Decorations ---------- */
 
-       .candles {
+    .candles {
       position: absolute;
       bottom: -7%;
       left: -6%;
@@ -172,7 +181,7 @@
     }
 
     .candles img {
-      bottom:20px;
+      bottom: 20px;
       width: 160px;
       opacity: 0.85;
     }
@@ -264,27 +273,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
