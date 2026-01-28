@@ -16,20 +16,19 @@
     body {
       height: 100vh;
       background: url("verjnakan.png") center / cover no-repeat;
-
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: serif;
       overflow: hidden;
       transition: background 1.2s ease;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     @font-face {
       font-family: "Vrdznagir";
       src: url("Vrdznagir.otf") format("opentype");
-      font-weight: normal;
-      font-style: normal;
     }
 
     @keyframes fadeOut {
@@ -48,88 +47,126 @@
       animation: fadeOut 1s ease forwards;
     }
 
-    .content {
-      position: absolute;
-      bottom: 35%;
-      text-align: center;
-      color: #f5f0eb;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
-      pointer-events: none;
-    }
+    /* ---------- Intro elements ---------- */
 
-    .content.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 28px;
-      opacity: 0.85;
-    }
     .tught-img {
       position: absolute;
-      width: 320px;
-      height: 200px;
-      top: 390px;
+      width: 80vw;
+      max-width: 320px;
+      height: auto;
+      top: 45vh;
       left: 50%;
       transform: translateX(-50%);
-      object-fit: cover;
       border-radius: 6px;
       z-index: 1;
-      transition: opacity 1s ease, transform 1s ease;
+      object-fit: cover;
       mix-blend-mode: multiply;
-      /* Տարբերակ 4: Մուգ ռոմանտիկ */
-      filter: sepia(0.5) saturate(1.5) brightness(0.8) contrast(1.2); 
-
-      mix-blend-mode: multiply;
+      filter: sepia(0.5) saturate(1.5) brightness(0.8) contrast(1.2);
     }
+
     .envelope-img {
       position: absolute;
-      width: 80px;
-      top: 350px;
+      width: 70px;
+      top: 38vh;
       left: 50%;
       transform: translateX(-50%);
       cursor: pointer;
-      transition: opacity 0s, transform 0s;
       z-index: 2;
     }
 
     .thetext {
       position: absolute;
-      top: 450px;
+      top: 55vh;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      color: #111;
-      transition: opacity 0s, transform 0s;
       z-index: 2;
-
+      color: #111;
     }
 
     .thetext h1 {
-      font-family: 'Vrdznagir', serif;
-      font-size: 28px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+      font-family: "Vrdznagir", serif;
+      font-size: clamp(18px, 5vw, 26px);
       opacity: 0.85;
     }
 
+    /* ---------- Main content ---------- */
+
+    .content {
+      position: absolute;
+      top: 14vh;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: #f5f0eb;
+      opacity: 0;
+      transition: all 0.8s ease;
+      pointer-events: none;
+      width: 90%;
+      max-width: 420px;
+    }
+
+    .content.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .header h1 {
+      font-size: clamp(18px, 5vw, 28px);
+      letter-spacing: 2px;
+      color: #800020;
+    }
+
+    .header h2 {
+      font-size: clamp(36px, 9vw, 60px);
+      font-style: italic;
+      color: #800020;
+      margin-top: 6px;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      font-size: clamp(14px, 4vw, 18px);
+      color: #800020;
+      opacity: 0.85;
+    }
+
+    .details {
+      margin-top: 26px;
+      color: #800020;
+    }
+
+    .date {
+      font-size: clamp(18px, 5vw, 26px);
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .venue-name {
+      font-size: clamp(16px, 4.5vw, 20px);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .venue div {
+      font-size: clamp(14px, 4vw, 17px);
+      line-height: 1.6;
+    }
+
+    .password {
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ---------- Decorations ---------- */
 
     .candles {
       position: absolute;
-      bottom: -15px;
-      left: 20%;
+      bottom: -10px;
+      left: 50%;
       transform: translateX(-50%);
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
     }
 
     .candles img {
@@ -139,112 +176,27 @@
 
     .bottles {
       position: absolute;
-      bottom: 0%;
-      left: 25%;
+      bottom: 0;
+      left: 55%;
       transform: translateX(-50%);
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
     }
 
     .bottles img {
       width: 120px;
       opacity: 0.85;
       transform: scaleX(-1);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-    }
-
-    .card {
-      width: 400px;
-      background: #faf8f3;
-      padding: 50px 40px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      position: relative;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(139, 69, 69, 0.02) 35px, rgba(139, 69, 69, 0.02) 70px);
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px solid #d4c4b0;
-      pointer-events: none;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: -20px;
-    }
-
-    .header h1 {
-      font-size: 32px;
-      color: #800020;
-      margin: 0;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    .header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 60px;
-      color: #800020;
-      margin: 10px 0;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 16px;
-      color: #800020;
-      margin-bottom: 40px;
-    }
-
-    .details {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .date {
-      font-size: 28px;
-      color: #800020;
-      font-weight: 600;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-    }
-
-    .venue {
-      font-size: 18px;
-      color: #800020;
-      line-height: 1.8;
-    }
-
-    .venue-name {
-      font-weight: 600;
-      font-size: 20px;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-    }
-
-    .password {
-      margin-top: 15px;
-      font-style: italic;
-      color: #800020;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Երաժշտություն -->
   <audio id="backgroundMusic" loop>
     <source src="Frank Sinatra - L.O.V.E. (lyrics).m4a" type="audio/mpeg">
-    <source src="photos/music.ogg" type="audio/ogg">
-    Ձեր բրաուզերը չի սպասարկում audio տարրը։
   </audio>
 
   <img src="tught.png" class="tught-img" id="tught">
@@ -256,7 +208,7 @@
 
   <div class="content" id="content">
     <div class="header">
-      <h1> a night of</h1>
+      <h1>a night of</h1>
       <h2>romance</h2>
     </div>
 
@@ -266,7 +218,6 @@
 
     <div class="details">
       <div class="date">FEB 14 | 8 PM</div>
-
       <div class="venue">
         <div class="venue-name">ROOFTOP</div>
         <div>Alek Manukyan 12/6</div>
@@ -275,33 +226,28 @@
       </div>
     </div>
   </div>
+
   <div class="candles">
-    <img src='candles.2png.png'>
+    <img src="candles.2png.png">
   </div>
+
   <div class="bottles">
-    <img src='shampayn.png.png'>
+    <img src="shampayn.png.png">
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
       const flower = document.getElementById('flower');
       const hintText = document.getElementById('hintText');
       const tught = document.getElementById('tught');
       const content = document.getElementById('content');
-      const body = document.body;
       const music = document.getElementById('backgroundMusic');
 
-      flower.addEventListener('click', function () {
-        // Սկսել երաժշտությունը
-        music.play().catch(function (error) {
-          console.log('Երաժշտությունը չի կարող ավտոմատ սկսվել:', error);
-        });
-
+      flower.addEventListener('click', () => {
+        music.play().catch(() => {});
         flower.classList.add('disappear');
         hintText.classList.add('disappear');
         tught.classList.add('disappear');
-
-        body.classList.add('main-bg');
 
         setTimeout(() => {
           flower.style.display = 'none';
@@ -314,5 +260,4 @@
   </script>
 
 </body>
-
 </html>
