@@ -13,143 +13,149 @@
       padding: 0;
     }
 
-    body {
-      height: 100vh;
-      background: url("bg.png") center / cover no-repeat;
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* iOS-ի համար */
+  width: 100%;
+  background: url("photos/bg.png") center / cover no-repeat fixed;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: serif;
+  overflow-x: hidden;
+  transition: background 1.2s ease;
+  position: relative;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: serif;
-      overflow: hidden;
-      transition: background 1.2s ease;
-    }
+/* HTML-ի համար */
+html {
+  height: -webkit-fill-available;
+}
 
-    @font-face {
-      font-family: "Vrdznagir";
-      src: url("Vrdznagir.otf") format("opentype");
-      font-weight: normal;
-      font-style: normal;
-    }
+.tught-img {
+  position: absolute;
+  width: min(320px, 85vw); /* Ադապտիվ լայնություն */
+  height: auto;
+  aspect-ratio: 16/10;
+  top: 35vh; /* Տոկոսներ ֆիքսված px-ի փոխարեն */
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: 1;
+  transition: opacity 1s ease, transform 1s ease;
+}
 
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: translateX(-50%) scale(1);
-      }
+.envelope-img {
+  position: absolute;
+  width: min(80px, 20vw);
+  top: 30vh;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: opacity 0s, transform 0s;
+  z-index: 2;
+}
 
-      to {
-        opacity: 0;
-        transform: translateX(-50%) scale(0.9);
-      }
-    }
+.thetext {
+  position: absolute;
+  top: 45vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #111;
+  transition: opacity 0s, transform 0s;
+  z-index: 2;
+  width: 90%;
+}
 
-    .disappear {
-      animation: fadeOut 1s ease forwards;
-    }
+.thetext h1 {
+  font-family: 'Vrdznagir', serif;
+  font-size: clamp(20px, 5vw, 28px); /* Ադապտիվ տեքստ */
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
 
-    .content {
-      position: absolute;
-      bottom: 35%;
-      text-align: center;
-      color: #f5f0eb;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
-      pointer-events: none;
-    }
+.content {
+  position: absolute;
+  bottom: 20vh; /* Ավելի ֆլեքսիբլ */
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  color: #f5f0eb;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  pointer-events: none;
+  padding: 0 20px;
+}
 
-    .content.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+.header h1 {
+  font-size: clamp(24px, 6vw, 32px);
+  margin-bottom: 10px;
+}
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+.header h2 {
+  font-size: clamp(36px, 10vw, 52px);
+}
 
-    p {
-      font-size: 18px;
-      opacity: 0.85;
-    }
+.date {
+  font-size: clamp(20px, 5vw, 28px);
+  color: #ffff;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+}
 
-    .tught-img {
-      position: absolute;
-      width: 320px;
-      height: 200px;
-      top: 280px;
-      left: 50%;
-      transform: translateX(-50%);
-      object-fit: cover;
-      border-radius: 6px;
-      z-index: 1;
-      transition: opacity 1s ease, transform 1s ease;
-    }
+.venue {
+  font-size: clamp(14px, 4vw, 18px);
+  color: #ffff;
+  line-height: 1.8;
+}
 
-    .envelope-img {
-      position: absolute;
-      width: 80px;
-      top: 240px;
-      left: 50%;
-      transform: translateX(-50%);
-      cursor: pointer;
-      transition: opacity 0s, transform 0s;
-      z-index: 2;
-    }
+.candles {
+  position: absolute;
+  bottom: -15px;
+  left: 20%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-    .thetext {
-      position: absolute;
-      top: 350px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: #111;
-      transition: opacity 0s, transform 0s;
-      z-index: 2;
+.candles img {
+  width: min(230px, 50vw);
+  opacity: 0.85;
+}
 
-    }
+.bottles {
+  position: absolute;
+  bottom: 0%;
+  left: 25%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-    .thetext h1 {
-      font-family: 'Vrdznagir', serif;
-      font-size: 28px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      opacity: 0.85;
-    }
+.bottles img {
+  width: min(120px, 30vw);
+  opacity: 0.85;
+  transform: scaleX(-1);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+}
 
-
-    .candles {
-      position: absolute;
-      bottom: -15px;
-      left: 20%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .candles img {
-      width: 230px;
-      opacity: 0.85;
-    }
-
-    .bottles {
-      position: absolute;
-      bottom: 0%;
-      left: 25%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .bottles img {
-      width: 120px;
-      opacity: 0.85;
-      transform: scaleX(-1);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-    }
+/* Media query հեռախոսների համար */
+@media (max-width: 768px) {
+  .content {
+    bottom: 15vh;
+  }
+  
+  .candles, .bottles {
+    display: none; /* Կարող եք թաքցնել փոքր էկրաններում */
+  }
+}
 
     .card {
       width: 400px;
@@ -321,4 +327,5 @@
 
 
 </html>
+
 
